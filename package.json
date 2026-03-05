@@ -3,7 +3,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "lint": "prettier --write resources"
+        "format": "prettier --write resources",
+        "format:check": "prettier --check resources"
     },
     "devDependencies": {
         "@vitejs/plugin-vue2": "^2.2.0",
