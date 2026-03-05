@@ -12,7 +12,7 @@
             </ui-button>
         </div>
 
-        <Stack v-model:open="cropper" title="Crop Image" full @closed="closeCropper">
+        <ui-stack v-model:open="cropper" title="Crop Image" full @closed="closeCropper">
             <div class="flex h-full flex-col bg-white p-3 dark:bg-gray-900">
                 <ImageCrop
                     v-model:value="shadow"
@@ -26,7 +26,7 @@
                     <ui-button variant="primary" @click="saveCropper">{{ __('Save') }}</ui-button>
                 </div>
             </div>
-        </Stack>
+        </ui-stack>
     </div>
     <div v-else v-text="message" />
 </template>
