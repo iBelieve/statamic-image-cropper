@@ -54,6 +54,7 @@
                 default: false,
             },
         },
+        emits: ['update:value'],
         data() {
             return {
                 cropper: null,
@@ -78,7 +79,7 @@
                 this.setupCropper()
             }
         },
-        beforeDestroy() {
+        beforeUnmount() {
             this.cropper.destroy()
         },
         methods: {
@@ -95,7 +96,7 @@
                         const {
                             detail: { x, y, width, height },
                         } = evt
-                        this.$emit('input', {
+                        this.$emit('update:value', {
                             x: Math.max(0, Math.round(x)),
                             y: Math.max(0, Math.round(y)),
                             width: Math.round(width),
@@ -106,7 +107,7 @@
             },
             handleReset() {
                 this.cropper.reset()
-                this.$emit('input', null)
+                this.$emit('update:value', null)
             },
         },
     }

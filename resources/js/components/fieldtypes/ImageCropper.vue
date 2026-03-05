@@ -15,7 +15,7 @@
         <stack v-if="cropper" name="crop-editor" full @closed="closeCropper">
             <div class="flex h-full flex-col bg-white p-3">
                 <ImageCrop
-                    v-model="shadow"
+                    v-model:value="shadow"
                     :source="source"
                     :aspect-ratio="dimension.ratio"
                     :show-details="config.show_details"
@@ -33,11 +33,11 @@
 
 <script>
     import ImageCrop from './ImageCrop.vue'
+    import { FieldtypeMixin as Fieldtype } from '@statamic/cms'
 
     export default {
         components: { ImageCrop },
         mixins: [Fieldtype],
-        inject: ['storeName'],
         data() {
             return {
                 dimension: null,
@@ -59,16 +59,7 @@
                 })
             },
             sourceMeta() {
-                if (!this.namePrefix) {
-                    return this.$store.state.publish[this.storeName].meta
-                }
-
-                let parent = this.$parent.$parent
-                while (parent.meta === undefined) {
-                    parent = parent.$parent
-                }
-
-                return parent.meta
+                return this.publishContainer.meta
             },
             sourceField() {
                 return this.sourceMeta[this.config.source]

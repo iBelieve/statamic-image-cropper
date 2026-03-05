@@ -1,5 +1,6 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -9,15 +10,15 @@
         "format:check": "prettier --check resources"
     },
     "devDependencies": {
+        "@statamic/cms": "file:vendor/statamic/cms/packages/cms",
         "@tailwindcss/typography": "^0.5.19",
-        "@vitejs/plugin-vue2": "^2.2.0",
         "eslint": "^8.57.1",
         "eslint-config-prettier": "^9.1.2",
         "eslint-plugin-vue": "^9.33.0",
-        "laravel-vite-plugin": "^0.7.4",
+        "laravel-vite-plugin": "^2.0.0",
         "prettier": "^2.8.7",
         "prettier-plugin-tailwindcss": "^0.2.6",
-        "vite": "^4.2.0"
+        "vite": "^7.0.4"
     },
     "dependencies": {
         "cropperjs": "^1.5.13"
