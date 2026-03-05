@@ -1,19 +1,19 @@
 <template>
     <div v-if="source">
-        <div class="buttons space-x-1">
-            <button
+        <div class="flex flex-wrap gap-1">
+            <UiButton
                 v-for="dimension in dimensions"
                 :key="dimension.key"
-                class="btn mx-.5"
-                :class="{ 'text-primary': crops[dimension.key] !== null }"
+                :variant="crops[dimension.key] !== null ? 'primary' : 'default'"
+                size="sm"
                 @click="openCropper(dimension)"
             >
                 {{ dimension.label }}
-            </button>
+            </UiButton>
         </div>
 
-        <stack v-if="cropper" name="crop-editor" full @closed="closeCropper">
-            <div class="flex h-full flex-col bg-white p-3">
+        <Stack v-model:open="cropper" title="Crop Image" full @closed="closeCropper">
+            <div class="flex h-full flex-col bg-white p-3 dark:bg-gray-900">
                 <ImageCrop
                     v-model:value="shadow"
                     :source="source"
@@ -21,12 +21,12 @@
                     :show-details="config.show_details"
                 />
 
-                <div class="-mx-1 mt-2 text-right">
-                    <button class="btn mx-1" @click="closeCropper">{{ __('Cancel') }}</button>
-                    <button class="btn-primary mx-1" @click="saveCropper">{{ __('Save') }}</button>
+                <div class="mt-2 flex justify-end gap-2">
+                    <UiButton variant="default" @click="closeCropper">{{ __('Cancel') }}</UiButton>
+                    <UiButton variant="primary" @click="saveCropper">{{ __('Save') }}</UiButton>
                 </div>
             </div>
-        </stack>
+        </Stack>
     </div>
     <div v-else v-text="message" />
 </template>
@@ -34,9 +34,10 @@
 <script>
     import ImageCrop from './ImageCrop.vue'
     import { FieldtypeMixin as Fieldtype } from '@statamic/cms'
+    import { Button as UiButton } from '@statamic/cms/ui'
 
     export default {
-        components: { ImageCrop },
+        components: { ImageCrop, UiButton },
         mixins: [Fieldtype],
         data() {
             return {
