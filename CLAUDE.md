@@ -20,6 +20,7 @@ Statamic Image Cropper is a Statamic CMS addon that provides an image cropping f
 - `npm run format:check` — Check frontend formatting without writing changes
 - `composer format` — Format PHP code with Laravel Pint
 - `composer format:check` — Check PHP formatting without writing changes
+- `composer analyze` - Static analysis with Larastan/PHPStan
 
 ## Project Structure
 
