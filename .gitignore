@@ -3,3 +3,4 @@ public/hot
 vendor
 .DS_Store
 .idea
+composer.lock
