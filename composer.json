@@ -1,10 +1,10 @@
 {
-    "name": "tv2regionerne/statamic-image-cropper",
+    "name": "ibelieve/statamic-image-cropper",
     "type": "statamic-addon",
     "description": "Image cropping fieldtype for Statamic",
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/tv2regionerne/statamic-image-cropper/issues"
+        "issues": "https://github.com/iBelieve/statamic-image-cropper/issues"
     },
     "authors": [
         {
@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Tv2regionerne\\StatamicImageCropper\\": "src"
+            "IBelieve\\StatamicImageCropper\\": "src"
         }
     },
     "extra": {
@@ -39,7 +39,7 @@
         },
         "laravel": {
             "providers": [
-                "Tv2regionerne\\StatamicImageCropper\\ServiceProvider"
+                "IBelieve\\StatamicImageCropper\\ServiceProvider"
             ]
         }
     },

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tv2regionerne\StatamicImageCropper;
+namespace IBelieve\StatamicImageCropper;
 
 use Statamic\Providers\AddonServiceProvider;
 
