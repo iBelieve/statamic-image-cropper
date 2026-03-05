@@ -42,6 +42,22 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run Larastan
+        run: composer analyze
+
   build:
     runs-on: ubuntu-latest
     steps:
