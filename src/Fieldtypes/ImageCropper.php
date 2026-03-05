@@ -163,7 +163,7 @@ class ImageCropper extends Fieldtype
         } elseif ($mode == 'collection') {
             $query = Entry::query()->where('collection', $this->config('collection'));
         } else {
-            return [];
+            throw new \InvalidArgumentException("Unknown mode: {$mode}");
         }
 
         $keyField = $this->config('key_field', 'slug');
