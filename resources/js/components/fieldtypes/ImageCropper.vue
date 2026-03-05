@@ -1,3 +1,7 @@
+<script setup>
+    import { Button, Stack } from '@statamic/cms/ui'
+</script>
+
 <template>
     <div v-if="source">
         <div class="flex flex-wrap gap-1">
@@ -27,10 +31,6 @@
     </div>
     <div v-else v-text="message" />
 </template>
-
-<script setup>
-    import { Button, Stack } from '@statamic/cms/ui'
-</script>
 
 <script>
     import ImageCrop from './ImageCrop.vue'

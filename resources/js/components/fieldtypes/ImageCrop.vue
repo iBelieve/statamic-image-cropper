@@ -1,3 +1,7 @@
+<script setup>
+    import { Button } from '@statamic/cms/ui'
+</script>
+
 <template>
     <div class="flex h-full gap-2">
         <div class="w-3/4 px-1">
@@ -35,10 +39,6 @@
         </div>
     </div>
 </template>
-
-<script setup>
-    import { Button } from '@statamic/cms/ui'
-</script>
 
 <script>
     import Cropper from 'cropperjs'
