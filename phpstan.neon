@@ -1,0 +1,13 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - src/
+
+    level: 5
+
+    ignoreErrors:
+        - identifier: method.notFound
+          message: '#Call to an undefined method Statamic\\Contracts\\Entries\\QueryBuilder::where\(\)#'
+          path: src/Fieldtypes/ImageCropper.php
