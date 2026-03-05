@@ -1,6 +1,6 @@
 <?php
 
-namespace Tv2regionerne\StatamicImageCropper\Fieldtypes;
+namespace IBelieve\StatamicImageCropper\Fieldtypes;
 
 use Statamic\Facades\Entry;
 use Statamic\Facades\Term;

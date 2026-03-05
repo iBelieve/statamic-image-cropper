@@ -4,7 +4,7 @@
 
 Statamic Image Cropper is a Statamic CMS addon that provides an image cropping fieldtype. It allows users to crop images with multiple preset aspect ratios or freeform dimensions, beyond basic focal point cropping.
 
-**Package:** `tv2regionerne/statamic-image-cropper`
+**Package:** `ibelieve/statamic-image-cropper`
 
 ## Tech Stack
 
@@ -34,7 +34,7 @@ Statamic Image Cropper is a Statamic CMS addon that provides an image cropping f
 
 ## Code Style
 
-- **PHP:** PSR-4 namespace `Tv2regionerne\StatamicImageCropper\`, follows Statamic addon patterns, enforced by Laravel Pint
+- **PHP:** PSR-4 namespace `IBelieve\StatamicImageCropper\`, follows Statamic addon patterns, enforced by Laravel Pint
 - **JS/Vue:** Single quotes, no semicolons, trailing commas (ES5), camelCase methods — enforced by Prettier (`.prettierrc`) and ESLint (`.eslintrc.json`)
 - **Indentation:** 4 spaces (2 spaces for YAML) — see `.editorconfig`
 - **Line length:** 120 characters max

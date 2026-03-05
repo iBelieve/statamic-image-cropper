@@ -1,9 +1,9 @@
 # Image Cropper
 
 <!-- statamic:hide -->
-[![Packagist](https://img.shields.io/packagist/v/tv2regionerne/statamic-image-cropper.svg?style=flat-square)](https://packagist.org/packages/tv2regionerne/statamic-image-cropper)
-[![Downloads](https://img.shields.io/packagist/dt/tv2regionerne/statamic-image-cropper.svg?style=flat-square)](https://packagist.org/packages/tv2regionerne/statamic-image-cropper)
-[![License](https://img.shields.io/github/license/tv2regionerne/statamic-image-cropper.svg?style=flat-square)](LICENSE)
+[![Packagist](https://img.shields.io/packagist/v/ibelieve/statamic-image-cropper.svg?style=flat-square)](https://packagist.org/packages/ibelieve/statamic-image-cropper)
+[![Downloads](https://img.shields.io/packagist/dt/ibelieve/statamic-image-cropper.svg?style=flat-square)](https://packagist.org/packages/ibelieve/statamic-image-cropper)
+[![License](https://img.shields.io/github/license/ibelieve/statamic-image-cropper.svg?style=flat-square)](LICENSE)
 [![Supported Statamic version](https://img.shields.io/badge/Statamic-4.0%2B-FF269E)](https://github.com/statamic/cms/releases)
 <!-- /statamic:hide -->
 
@@ -31,10 +31,10 @@ field:
 
 ## How to Install
 
-You can search for this addon in the `Tools > Addons` section of the Statamic control panel and click **install**, or run the following command from your project root:
+You can run the following command from your project root:
 
 ``` bash
-composer require tv2regionerne/statamic-image-cropper
+composer require ibelieve/statamic-image-cropper
 ```
 
 ## How to Use
