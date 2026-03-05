@@ -1,5 +1,5 @@
 <template>
-    <div class="space-x-1 flex h-full">
+    <div class="flex h-full space-x-1">
         <div class="blueprint-section-field-w-3/4 px-1">
             <div class="relative mx-auto h-full" :style="containerStyle">
                 <img ref="cropper" :src="source" class="object-cover" />
@@ -15,20 +15,20 @@
 
                 <dl class="ml-2 mt-2 inline-block text-sm" v-if="showDetails && value">
                     <div class="border-1 border-grey-40 flex rounded">
-                        <dt class="py-1 bg-grey-40 w-20 px-1.5">{{ __('X') }}</dt>
-                        <dd class="py-1 w-20 px-1.5 text-right">{{ value.x }}px</dd>
+                        <dt class="bg-grey-40 w-20 px-1.5 py-1">{{ __('X') }}</dt>
+                        <dd class="w-20 px-1.5 py-1 text-right">{{ value.x }}px</dd>
                     </div>
                     <div class="border-1 border-grey-40 mt-1 flex rounded">
-                        <dt class="py-1 bg-grey-40 w-20 px-1.5">{{ __('Y') }}</dt>
-                        <dd class="py-1 w-20 px-1.5 text-right">{{ value.y }}px</dd>
+                        <dt class="bg-grey-40 w-20 px-1.5 py-1">{{ __('Y') }}</dt>
+                        <dd class="w-20 px-1.5 py-1 text-right">{{ value.y }}px</dd>
                     </div>
                     <div class="border-1 border-grey-40 mt-1 flex rounded">
-                        <dt class="py-1 bg-grey-40 w-20 px-1.5">{{ __('Width') }}</dt>
-                        <dd class="py-1 w-20 px-1.5 text-right">{{ value.width }}px</dd>
+                        <dt class="bg-grey-40 w-20 px-1.5 py-1">{{ __('Width') }}</dt>
+                        <dd class="w-20 px-1.5 py-1 text-right">{{ value.width }}px</dd>
                     </div>
                     <div class="border-1 border-grey-40 mt-1 flex rounded">
-                        <dt class="py-1 bg-grey-40 w-20 px-1.5">{{ __('Height') }}</dt>
-                        <dd class="py-1 w-20 px-1.5 text-right">{{ value.height }}px</dd>
+                        <dt class="bg-grey-40 w-20 px-1.5 py-1">{{ __('Height') }}</dt>
+                        <dd class="w-20 px-1.5 py-1 text-right">{{ value.height }}px</dd>
                     </div>
                 </dl>
             </div>

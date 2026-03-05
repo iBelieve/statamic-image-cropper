@@ -38,5 +38,10 @@
                 "Tv2regionerne\\StatamicImageCropper\\ServiceProvider"
             ]
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
     }
 }
