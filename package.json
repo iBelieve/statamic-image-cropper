@@ -10,7 +10,7 @@
         "format:check": "prettier --check resources"
     },
     "devDependencies": {
-        "@statamic/cms": "file:vendor/statamic/cms/packages/cms",
+        "@statamic/cms": "file:./vendor/statamic/cms/resources/dist-package",
         "eslint": "^8.57.1",
         "eslint-config-prettier": "^9.1.2",
         "eslint-plugin-vue": "^9.33.0",
