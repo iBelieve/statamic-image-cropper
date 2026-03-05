@@ -5,27 +5,24 @@
                 v-for="dimension in dimensions"
                 :key="dimension.key"
                 :variant="crops[dimension.key] !== null ? 'primary' : 'default'"
-                size="sm"
                 @click="openCropper(dimension)"
             >
                 {{ dimension.label }}
             </ui-button>
         </div>
 
-        <ui-stack v-model:open="cropper" title="Crop Image" full @closed="closeCropper">
-            <div class="flex h-full flex-col bg-white p-3 dark:bg-gray-900">
-                <ImageCrop
-                    v-model:value="shadow"
-                    :source="source"
-                    :aspect-ratio="dimension?.ratio"
-                    :show-details="config.show_details"
-                />
+        <ui-stack v-model:open="cropper" title="Crop Image" size="full" @closed="closeCropper">
+            <ImageCrop
+                v-model:value="shadow"
+                :source="source"
+                :aspect-ratio="dimension?.ratio"
+                :show-details="config.show_details"
+            />
 
-                <div class="mt-2 flex justify-end gap-2">
-                    <ui-button variant="default" @click="closeCropper">{{ __('Cancel') }}</ui-button>
-                    <ui-button variant="primary" @click="saveCropper">{{ __('Save') }}</ui-button>
-                </div>
-            </div>
+            <template #footer-end>
+                <ui-button variant="default" @click="closeCropper">{{ __('Cancel') }}</ui-button>
+                <ui-button variant="primary" @click="saveCropper">{{ __('Save') }}</ui-button>
+            </template>
         </ui-stack>
     </div>
     <div v-else v-text="message" />

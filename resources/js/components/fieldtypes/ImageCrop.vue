@@ -11,23 +11,23 @@
             </div>
 
             <div class="flex">
-                <ui-button variant="default" size="sm" class="mt-2" @click="handleReset">{{ __('Reset') }}</ui-button>
+                <ui-button variant="default" class="mt-2" @click="handleReset">{{ __('Reset') }}</ui-button>
 
                 <dl v-if="showDetails && value" class="ml-2 mt-2 inline-block text-sm">
-                    <div class="flex rounded border border-gray-400">
-                        <dt class="w-20 bg-gray-400 px-1.5 py-1">{{ __('X') }}</dt>
+                    <div class="flex rounded border border-gray-300">
+                        <dt class="w-20 bg-gray-300 px-1.5 py-1">{{ __('X') }}</dt>
                         <dd class="w-20 px-1.5 py-1 text-right">{{ value.x }}px</dd>
                     </div>
-                    <div class="mt-1 flex rounded border border-gray-400">
-                        <dt class="w-20 bg-gray-400 px-1.5 py-1">{{ __('Y') }}</dt>
+                    <div class="mt-1 flex rounded border border-gray-300">
+                        <dt class="w-20 bg-gray-300 px-1.5 py-1">{{ __('Y') }}</dt>
                         <dd class="w-20 px-1.5 py-1 text-right">{{ value.y }}px</dd>
                     </div>
-                    <div class="mt-1 flex rounded border border-gray-400">
-                        <dt class="w-20 bg-gray-400 px-1.5 py-1">{{ __('Width') }}</dt>
+                    <div class="mt-1 flex rounded border border-gray-300">
+                        <dt class="w-20 bg-gray-300 px-1.5 py-1">{{ __('Width') }}</dt>
                         <dd class="w-20 px-1.5 py-1 text-right">{{ value.width }}px</dd>
                     </div>
-                    <div class="mt-1 flex rounded border border-gray-400">
-                        <dt class="w-20 bg-gray-400 px-1.5 py-1">{{ __('Height') }}</dt>
+                    <div class="mt-1 flex rounded border border-gray-300">
+                        <dt class="w-20 bg-gray-300 px-1.5 py-1">{{ __('Height') }}</dt>
                         <dd class="w-20 px-1.5 py-1 text-right">{{ value.height }}px</dd>
                     </div>
                 </dl>
