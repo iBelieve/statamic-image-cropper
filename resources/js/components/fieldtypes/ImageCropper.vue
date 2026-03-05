@@ -35,8 +35,8 @@
     import ImageCrop from './ImageCrop.vue'
 
     export default {
-        mixins: [Fieldtype],
         components: { ImageCrop },
+        mixins: [Fieldtype],
         inject: ['storeName'],
         data() {
             return {
