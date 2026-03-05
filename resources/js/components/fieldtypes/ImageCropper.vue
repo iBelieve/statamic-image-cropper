@@ -17,7 +17,7 @@
                 <ImageCrop
                     v-model:value="shadow"
                     :source="source"
-                    :aspect-ratio="dimension.ratio"
+                    :aspect-ratio="dimension?.ratio"
                     :show-details="config.show_details"
                 />
 
