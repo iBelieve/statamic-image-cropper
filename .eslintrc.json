@@ -21,6 +21,7 @@
     "rules": {
         "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
         "no-console": "warn",
+        "vue/component-definition-name-casing": "off",
         "vue/multi-word-component-names": "off",
         "vue/require-prop-types": "warn",
         "vue/no-mutating-props": "error"
