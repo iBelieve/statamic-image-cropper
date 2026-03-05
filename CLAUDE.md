@@ -8,9 +8,9 @@ Statamic Image Cropper is a Statamic CMS addon that provides an image cropping f
 
 ## Tech Stack
 
-- **Backend:** PHP 7.4+, Statamic CMS v4/v5, Laravel
+- **Backend:** PHP 7.4+, Statamic CMS v6, Laravel
 - **Frontend:** Vue 2, CropperJS, Tailwind CSS
-- **Build:** Vite, Node v18.15 (see `.nvmrc`)
+- **Build:** Vite, Node v24 LTS (see `.nvmrc`)
 
 ## Commands
 

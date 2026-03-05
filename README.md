@@ -4,7 +4,7 @@
 [![Packagist](https://img.shields.io/packagist/v/ibelieve/statamic-image-cropper.svg?style=flat-square)](https://packagist.org/packages/ibelieve/statamic-image-cropper)
 [![Downloads](https://img.shields.io/packagist/dt/ibelieve/statamic-image-cropper.svg?style=flat-square)](https://packagist.org/packages/ibelieve/statamic-image-cropper)
 [![License](https://img.shields.io/github/license/ibelieve/statamic-image-cropper.svg?style=flat-square)](LICENSE)
-[![Supported Statamic version](https://img.shields.io/badge/Statamic-4.0%2B-FF269E)](https://github.com/statamic/cms/releases)
+[![Supported Statamic version](https://img.shields.io/badge/Statamic-6.0%2B-FF269E)](https://github.com/statamic/cms/releases)
 <!-- /statamic:hide -->
 
 This addon adds an image cropping fieldtype, for those cases where focal point cropping just isn't enough. This project is a fork of [tv2regionerne/statamic-image-cropper](https://github.com/tv2regionerne/statamic-image-cropper) to add compatibility with Statamic 6, since as of March 2026 the original repo has not received any updates since June 2024 and is only compatible with Statamic 4 and 5.
