@@ -16,9 +16,10 @@ Statamic Image Cropper is a Statamic CMS addon that provides an image cropping f
 
 - `npm run dev` — Start Vite dev server with HMR
 - `npm run build` — Build production assets to `public/build/`
-- `npm run lint` — Format code with Prettier (resources directory)
-
-There are no test commands configured for this project.
+- `npm run format` — Format frontend code with Prettier (resources directory)
+- `npm run format:check` — Check frontend formatting without writing changes
+- `composer format` — Format PHP code with Laravel Pint
+- `composer format:check` — Check PHP formatting without writing changes
 
 ## Project Structure
 
@@ -31,7 +32,7 @@ There are no test commands configured for this project.
 
 ## Code Style
 
-- **PHP:** PSR-4 namespace `Tv2regionerne\StatamicImageCropper\`, follows Statamic addon patterns
+- **PHP:** PSR-4 namespace `Tv2regionerne\StatamicImageCropper\`, follows Statamic addon patterns, enforced by Laravel Pint
 - **JS/Vue:** Single quotes, no semicolons, trailing commas (ES5), camelCase methods — enforced by Prettier (`.prettierrc`)
 - **Indentation:** 4 spaces (2 spaces for YAML) — see `.editorconfig`
 - **Line length:** 120 characters max
