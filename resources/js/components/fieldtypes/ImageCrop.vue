@@ -11,7 +11,7 @@
             </div>
 
             <div class="flex">
-                <ui-button variant="default" class="mt-2" @click="handleReset">{{ __('Reset') }}</ui-button>
+                <Button variant="default" class="mt-2" @click="handleReset">{{ __('Reset') }}</Button>
 
                 <dl v-if="showDetails && value" class="ml-2 mt-2 inline-block text-sm">
                     <div class="flex rounded border border-gray-300">
@@ -35,6 +35,10 @@
         </div>
     </div>
 </template>
+
+<script setup>
+    import { Button } from '@statamic/cms/ui'
+</script>
 
 <script>
     import Cropper from 'cropperjs'

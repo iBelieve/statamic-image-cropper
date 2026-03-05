@@ -1,17 +1,17 @@
 <template>
     <div v-if="source">
         <div class="flex flex-wrap gap-1">
-            <ui-button
+            <Button
                 v-for="dimension in dimensions"
                 :key="dimension.key"
                 :variant="crops[dimension.key] !== null ? 'primary' : 'default'"
                 @click="openCropper(dimension)"
             >
                 {{ dimension.label }}
-            </ui-button>
+            </Button>
         </div>
 
-        <ui-stack v-model:open="cropper" title="Crop Image" size="full" @closed="closeCropper">
+        <Stack v-model:open="cropper" title="Crop Image" size="full" @closed="closeCropper">
             <ImageCrop
                 v-model:value="shadow"
                 :source="source"
@@ -20,13 +20,17 @@
             />
 
             <template #footer-end>
-                <ui-button variant="default" @click="closeCropper">{{ __('Cancel') }}</ui-button>
-                <ui-button variant="primary" @click="saveCropper">{{ __('Save') }}</ui-button>
+                <Button variant="default" @click="closeCropper">{{ __('Cancel') }}</Button>
+                <Button variant="primary" @click="saveCropper">{{ __('Save') }}</Button>
             </template>
-        </ui-stack>
+        </Stack>
     </div>
     <div v-else v-text="message" />
 </template>
+
+<script setup>
+    import { Button, Stack } from '@statamic/cms/ui'
+</script>
 
 <script>
     import ImageCrop from './ImageCrop.vue'
