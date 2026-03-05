@@ -1,7 +1,7 @@
 <template>
     <div v-if="source">
         <div class="flex flex-wrap gap-1">
-            <UiButton
+            <ui-button
                 v-for="dimension in dimensions"
                 :key="dimension.key"
                 :variant="crops[dimension.key] !== null ? 'primary' : 'default'"
@@ -9,7 +9,7 @@
                 @click="openCropper(dimension)"
             >
                 {{ dimension.label }}
-            </UiButton>
+            </ui-button>
         </div>
 
         <Stack v-model:open="cropper" title="Crop Image" full @closed="closeCropper">
@@ -22,8 +22,8 @@
                 />
 
                 <div class="mt-2 flex justify-end gap-2">
-                    <UiButton variant="default" @click="closeCropper">{{ __('Cancel') }}</UiButton>
-                    <UiButton variant="primary" @click="saveCropper">{{ __('Save') }}</UiButton>
+                    <ui-button variant="default" @click="closeCropper">{{ __('Cancel') }}</ui-button>
+                    <ui-button variant="primary" @click="saveCropper">{{ __('Save') }}</ui-button>
                 </div>
             </div>
         </Stack>
@@ -34,10 +34,8 @@
 <script>
     import ImageCrop from './ImageCrop.vue'
     import { FieldtypeMixin as Fieldtype } from '@statamic/cms'
-    import { Button as UiButton } from '@statamic/cms/ui'
-
     export default {
-        components: { ImageCrop, UiButton },
+        components: { ImageCrop },
         mixins: [Fieldtype],
         data() {
             return {
