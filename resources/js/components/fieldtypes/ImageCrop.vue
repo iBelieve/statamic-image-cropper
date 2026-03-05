@@ -13,7 +13,7 @@
             <div class="flex">
                 <button class="btn mt-2" @click="handleReset">{{ __('Reset') }}</button>
 
-                <dl class="ml-2 mt-2 inline-block text-sm" v-if="showDetails && value">
+                <dl v-if="showDetails && value" class="ml-2 mt-2 inline-block text-sm">
                     <div class="border-1 border-grey-40 flex rounded">
                         <dt class="bg-grey-40 w-20 px-1.5 py-1">{{ __('X') }}</dt>
                         <dd class="w-20 px-1.5 py-1 text-right">{{ value.x }}px</dd>

@@ -25,6 +25,23 @@ jobs:
       - name: Check formatting
         run: composer format:check
 
+  frontend-linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
   frontend-formatting:
     runs-on: ubuntu-latest
     steps:
