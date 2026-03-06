@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  PHP_VERSION: '8.2'
+  PHP_VERSION: '8.3'
 
 jobs:
   backend-formatting:
@@ -30,6 +30,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -46,6 +54,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -64,7 +80,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: ['8.2', '8.3', '8.4', '8.5']
+        php-version: ['8.3', '8.4', '8.5']
     name: static-analysis (PHP ${{ matrix.php-version }})
     steps:
       - uses: actions/checkout@v4
@@ -85,6 +101,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -99,8 +123,8 @@ jobs:
 
       - name: Verify build output is committed
         run: |
-          if [ -n "$(git status --porcelain public/build/)" ]; then
+          if [ -n "$(git status --porcelain resources/dist/)" ]; then
             echo "::error::Build output is not up to date. Run 'npm run build' and commit the changes."
-            git diff --stat public/build/
+            git diff --stat resources/dist/
             exit 1
           fi

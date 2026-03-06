@@ -1,43 +1,44 @@
+<script setup>
+    import { Button, Stack } from '@statamic/cms/ui'
+</script>
+
 <template>
     <div v-if="source">
-        <div class="buttons space-x-1">
-            <button
+        <div class="flex flex-wrap gap-1">
+            <Button
                 v-for="dimension in dimensions"
                 :key="dimension.key"
-                class="btn mx-.5"
-                :class="{ 'text-primary': crops[dimension.key] !== null }"
+                :variant="crops[dimension.key] !== null ? 'primary' : 'default'"
                 @click="openCropper(dimension)"
             >
                 {{ dimension.label }}
-            </button>
+            </Button>
         </div>
 
-        <stack v-if="cropper" name="crop-editor" full @closed="closeCropper">
-            <div class="flex h-full flex-col bg-white p-3">
-                <ImageCrop
-                    v-model="shadow"
-                    :source="source"
-                    :aspect-ratio="dimension.ratio"
-                    :show-details="config.show_details"
-                />
+        <Stack v-model:open="cropper" title="Crop Image" size="full" @closed="closeCropper">
+            <ImageCrop
+                v-model:value="shadow"
+                :source="source"
+                :aspect-ratio="dimension?.ratio"
+                :show-details="config.show_details"
+            />
 
-                <div class="-mx-1 mt-2 text-right">
-                    <button class="btn mx-1" @click="closeCropper">{{ __('Cancel') }}</button>
-                    <button class="btn-primary mx-1" @click="saveCropper">{{ __('Save') }}</button>
-                </div>
-            </div>
-        </stack>
+            <template #footer-end>
+                <Button variant="default" @click="closeCropper">{{ __('Cancel') }}</Button>
+                <Button variant="primary" @click="saveCropper">{{ __('Save') }}</Button>
+            </template>
+        </Stack>
     </div>
     <div v-else v-text="message" />
 </template>
 
 <script>
     import ImageCrop from './ImageCrop.vue'
+    import { FieldtypeMixin as Fieldtype } from '@statamic/cms'
 
     export default {
         components: { ImageCrop },
         mixins: [Fieldtype],
-        inject: ['storeName'],
         data() {
             return {
                 dimension: null,
@@ -59,16 +60,7 @@
                 })
             },
             sourceMeta() {
-                if (!this.namePrefix) {
-                    return this.$store.state.publish[this.storeName].meta
-                }
-
-                let parent = this.$parent.$parent
-                while (parent.meta === undefined) {
-                    parent = parent.$parent
-                }
-
-                return parent.meta
+                return this.publishContainer.meta
             },
             sourceField() {
                 return this.sourceMeta[this.config.source]

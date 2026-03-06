@@ -1,33 +1,37 @@
+<script setup>
+    import { Button } from '@statamic/cms/ui'
+</script>
+
 <template>
-    <div class="flex h-full space-x-1">
-        <div class="blueprint-section-field-w-3/4 px-1">
+    <div class="flex h-full gap-1">
+        <div class="w-3/4 px-1">
             <div class="relative mx-auto h-full" :style="containerStyle">
                 <img ref="cropper" :src="source" class="object-cover" />
             </div>
         </div>
-        <div class="blueprint-section-field-w-1/4 px-1">
+        <div class="w-1/4 px-1">
             <div ref="preview" class="overflow-hidden">
                 <img :src="source" />
             </div>
 
             <div class="flex">
-                <button class="btn mt-2" @click="handleReset">{{ __('Reset') }}</button>
+                <Button variant="default" class="mt-2" @click="handleReset">{{ __('Reset') }}</Button>
 
                 <dl v-if="showDetails && value" class="ml-2 mt-2 inline-block text-sm">
-                    <div class="border-1 border-grey-40 flex rounded">
-                        <dt class="bg-grey-40 w-20 px-1.5 py-1">{{ __('X') }}</dt>
+                    <div class="flex rounded border border-gray-300">
+                        <dt class="w-20 bg-gray-300 px-1.5 py-1">{{ __('X') }}</dt>
                         <dd class="w-20 px-1.5 py-1 text-right">{{ value.x }}px</dd>
                     </div>
-                    <div class="border-1 border-grey-40 mt-1 flex rounded">
-                        <dt class="bg-grey-40 w-20 px-1.5 py-1">{{ __('Y') }}</dt>
+                    <div class="mt-1 flex rounded border border-gray-300">
+                        <dt class="w-20 bg-gray-300 px-1.5 py-1">{{ __('Y') }}</dt>
                         <dd class="w-20 px-1.5 py-1 text-right">{{ value.y }}px</dd>
                     </div>
-                    <div class="border-1 border-grey-40 mt-1 flex rounded">
-                        <dt class="bg-grey-40 w-20 px-1.5 py-1">{{ __('Width') }}</dt>
+                    <div class="mt-1 flex rounded border border-gray-300">
+                        <dt class="w-20 bg-gray-300 px-1.5 py-1">{{ __('Width') }}</dt>
                         <dd class="w-20 px-1.5 py-1 text-right">{{ value.width }}px</dd>
                     </div>
-                    <div class="border-1 border-grey-40 mt-1 flex rounded">
-                        <dt class="bg-grey-40 w-20 px-1.5 py-1">{{ __('Height') }}</dt>
+                    <div class="mt-1 flex rounded border border-gray-300">
+                        <dt class="w-20 bg-gray-300 px-1.5 py-1">{{ __('Height') }}</dt>
                         <dd class="w-20 px-1.5 py-1 text-right">{{ value.height }}px</dd>
                     </div>
                 </dl>
@@ -54,6 +58,7 @@
                 default: false,
             },
         },
+        emits: ['update:value'],
         data() {
             return {
                 cropper: null,
@@ -78,7 +83,7 @@
                 this.setupCropper()
             }
         },
-        beforeDestroy() {
+        beforeUnmount() {
             this.cropper.destroy()
         },
         methods: {
@@ -95,7 +100,7 @@
                         const {
                             detail: { x, y, width, height },
                         } = evt
-                        this.$emit('input', {
+                        this.$emit('update:value', {
                             x: Math.max(0, Math.round(x)),
                             y: Math.max(0, Math.round(y)),
                             width: Math.round(width),
@@ -106,7 +111,7 @@
             },
             handleReset() {
                 this.cropper.reset()
-                this.$emit('input', null)
+                this.$emit('update:value', null)
             },
         },
     }
@@ -119,11 +124,5 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-    }
-    .border-1 {
-        border-width: 1px;
-    }
-    .w-20 {
-        width: 5rem;
     }
 </style>

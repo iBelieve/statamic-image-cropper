@@ -8,14 +8,14 @@ Statamic Image Cropper is a Statamic CMS addon that provides an image cropping f
 
 ## Tech Stack
 
-- **Backend:** PHP 7.4+, Statamic CMS v4/v5, Laravel
-- **Frontend:** Vue 2, CropperJS, Tailwind CSS
-- **Build:** Vite, Node v18.15 (see `.nvmrc`)
+- **Backend:** PHP 8.3+, Statamic CMS v6, Laravel 12
+- **Frontend:** Vue 3, CropperJS, Tailwind CSS v4
+- **Build:** Vite, Node v24 LTS (see `.nvmrc`)
 
 ## Commands
 
 - `npm run dev` — Start Vite dev server with HMR
-- `npm run build` — Build production assets to `public/build/`
+- `npm run build` — Build production assets to `resources/dist/`
 - `npm run lint:fix` — Lint and auto-fix frontend code with ESLint
 - `npm run format` — Format frontend code with Prettier (resources directory)
 - `npm run format:check` — Check frontend formatting without writing changes
@@ -30,7 +30,17 @@ Statamic Image Cropper is a Statamic CMS addon that provides an image cropping f
 - `resources/js/addon.js` — Vue component registration entry point
 - `resources/js/components/fieldtypes/ImageCropper.vue` — Main fieldtype UI component
 - `resources/js/components/fieldtypes/ImageCrop.vue` — CropperJS-based cropping UI
-- `public/build/` — Pre-built distribution assets (committed)
+- `resources/dist/` — Pre-built distribution assets (committed)
+
+## Statamic UI Components
+
+Statamic 6 provides a library of Vue UI components (Button, Stack, Card, etc.) for building Control Panel interfaces. Reference https://ui.statamic.dev for available components, props, slots, and usage examples. Import them via `<script setup>`:
+
+```vue
+<script setup>
+import { Button, Stack } from '@statamic/cms/ui'
+</script>
+```
 
 ## Code Style
 
