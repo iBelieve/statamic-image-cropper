@@ -96,3 +96,11 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Verify build output is committed
+        run: |
+          if [ -n "$(git status --porcelain public/build/)" ]; then
+            echo "::error::Build output is not up to date. Run 'npm run build' and commit the changes."
+            git diff --stat public/build/
+            exit 1
+          fi
