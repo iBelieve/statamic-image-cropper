@@ -1,7 +1,3 @@
-<script setup>
-    import { Button } from '@statamic/cms/ui'
-</script>
-
 <template>
     <div class="flex h-full gap-1">
         <div class="w-3/4 px-1">
@@ -40,14 +36,29 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+    import { defineComponent } from 'vue'
+    import { Button } from '@statamic/cms/ui'
     import Cropper from 'cropperjs'
     import 'cropperjs/dist/cropper.css'
 
-    export default {
+    interface CropData {
+        x: number
+        y: number
+        width: number
+        height: number
+    }
+
+    interface ImageDimension {
+        width: number
+        height: number
+    }
+
+    export default defineComponent({
         name: 'ImageCrop',
+        components: { Button },
         props: {
-            value: Object,
+            value: Object as () => CropData | null,
             source: {
                 type: String,
                 required: true,
@@ -59,14 +70,14 @@
             },
         },
         emits: ['update:value'],
-        data() {
+        data(): { cropper: Cropper | null; dimension: ImageDimension | null } {
             return {
                 cropper: null,
                 dimension: null,
             }
         },
         computed: {
-            containerStyle() {
+            containerStyle(): Record<string, string> | null {
                 if (this.dimension) {
                     const { width, height } = this.dimension
 
@@ -77,26 +88,28 @@
             },
         },
         mounted() {
-            this.$refs.cropper.onload = () => {
-                const { width, height } = this.$refs.cropper
+            const imgEl = this.$refs.cropper as HTMLImageElement
+            imgEl.onload = () => {
+                const { width, height } = imgEl
                 this.dimension = { width, height }
                 this.setupCropper()
             }
         },
         beforeUnmount() {
-            this.cropper.destroy()
+            this.cropper!.destroy()
         },
         methods: {
             setupCropper() {
-                const { cropper, preview } = this.$refs
+                const cropper = this.$refs.cropper as HTMLImageElement
+                const preview = this.$refs.preview as HTMLDivElement
                 this.cropper = new Cropper(cropper, {
                     aspectRatio: this.aspectRatio,
                     autoCropArea: 1,
-                    data: this.value,
+                    data: this.value as Cropper.Data | undefined,
                     preview: preview,
                     responsive: true,
                     zoomable: false,
-                    crop: evt => {
+                    crop: (evt: Cropper.CropEvent) => {
                         const {
                             detail: { x, y, width, height },
                         } = evt
@@ -110,11 +123,11 @@
                 })
             },
             handleReset() {
-                this.cropper.reset()
+                this.cropper!.reset()
                 this.$emit('update:value', null)
             },
         },
-    }
+    })
 </script>
 
 <style scoped>

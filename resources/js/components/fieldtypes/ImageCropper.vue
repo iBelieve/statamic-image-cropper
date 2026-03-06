@@ -1,7 +1,3 @@
-<script setup>
-    import { Button, Stack } from '@statamic/cms/ui'
-</script>
-
 <template>
     <div v-if="source">
         <div class="flex flex-wrap gap-1">
@@ -19,7 +15,7 @@
             <ImageCrop
                 v-model:value="shadow"
                 :source="source"
-                :aspect-ratio="dimension?.ratio"
+                :aspect-ratio="dimension?.ratio ?? undefined"
                 :show-details="config.show_details"
             />
 
@@ -32,45 +28,64 @@
     <div v-else v-text="message" />
 </template>
 
-<script>
+<script lang="ts">
+    import { defineComponent } from 'vue'
+    import { Button, Stack } from '@statamic/cms/ui'
     import ImageCrop from './ImageCrop.vue'
     import { FieldtypeMixin as Fieldtype } from '@statamic/cms'
 
-    export default {
-        components: { ImageCrop },
+    interface CropData {
+        x: number
+        y: number
+        width: number
+        height: number
+    }
+
+    interface Dimension {
+        key: string
+        label: string
+        ratio: number | null
+    }
+
+    interface Crops {
+        [key: string]: CropData | null
+    }
+
+    export default defineComponent({
+        components: { Button, Stack, ImageCrop },
         mixins: [Fieldtype],
-        data() {
+        data(): { dimension: Dimension | null; cropper: boolean; shadow: CropData | null; crops: Crops } {
             return {
                 dimension: null,
                 cropper: false,
                 shadow: null,
-                crops: this.prepareCrops(this.value),
+                crops: this.prepareCrops(this.value as Crops | null),
             }
         },
         computed: {
-            dimensions() {
-                return Object.entries(this.meta.dimensions).map(([key, label]) => {
-                    let ratio = null
+            dimensions(): Dimension[] {
+                return Object.entries(this.meta.dimensions as Record<string, string>).map(([key, label]) => {
+                    let ratio: number | null = null
                     if (key.includes('_')) {
                         const [width, height] = key.split('_')
-                        ratio = width / height
+                        ratio = Number(width) / Number(height)
                     }
 
                     return { key, label, ratio }
                 })
             },
-            sourceMeta() {
+            sourceMeta(): Record<string, any> {
                 return this.publishContainer.meta
             },
-            sourceField() {
-                return this.sourceMeta[this.config.source]
+            sourceField(): any {
+                return this.sourceMeta[this.config.source as string]
             },
-            source() {
+            source(): string | null {
                 const asset = this.sourceField?.data?.[0]
 
                 return asset?.isImage ? asset.url || asset.downloadUrl : null
             },
-            message() {
+            message(): string {
                 return this.sourceField
                     ? __('Select an image to start cropping.')
                     : __('Image source field was not found.')
@@ -79,7 +94,7 @@
         watch: {
             source: {
                 immediate: true,
-                handler(cur, old) {
+                handler(cur: string | null, old: string | null) {
                     if (old && cur !== old) {
                         this.crops = this.prepareCrops()
                         this.update(this.crops)
@@ -88,12 +103,15 @@
             },
         },
         methods: {
-            prepareCrops(value) {
-                const crops = Object.assign({}, ...Object.keys(this.meta.dimensions).map(key => ({ [key]: null })))
+            prepareCrops(value?: Crops | null): Crops {
+                const crops: Crops = Object.assign(
+                    {},
+                    ...Object.keys(this.meta.dimensions as Record<string, string>).map(key => ({ [key]: null }))
+                )
 
                 return value ? Object.assign(crops, value) : crops
             },
-            openCropper(dimension) {
+            openCropper(dimension: Dimension) {
                 this.dimension = dimension
                 this.shadow = this.crops[this.dimension.key]
                 this.cropper = true
@@ -104,10 +122,10 @@
                 this.shadow = null
             },
             saveCropper() {
-                this.crops[this.dimension.key] = this.shadow
+                this.crops[this.dimension!.key] = this.shadow
                 this.closeCropper()
                 this.update(this.crops)
             },
         },
-    }
+    })
 </script>
