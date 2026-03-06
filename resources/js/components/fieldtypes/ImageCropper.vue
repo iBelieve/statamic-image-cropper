@@ -35,6 +35,7 @@
 <script>
     import ImageCrop from './ImageCrop.vue'
     import { FieldtypeMixin as Fieldtype } from '@statamic/cms'
+
     export default {
         components: { ImageCrop },
         mixins: [Fieldtype],

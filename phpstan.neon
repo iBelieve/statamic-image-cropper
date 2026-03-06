@@ -13,5 +13,5 @@ parameters:
           message: '#Call to an undefined method Statamic\\Contracts\\Entries\\QueryBuilder::where\(\)#'
           path: src/Fieldtypes/ImageCropper.php
         - identifier: property.defaultValue
-          message: '#Property Tv2regionerne\\StatamicImageCropper\\ServiceProvider::\$vite#'
+          message: '#Property IBelieve\\StatamicImageCropper\\ServiceProvider::\$vite#'
           path: src/ServiceProvider.php

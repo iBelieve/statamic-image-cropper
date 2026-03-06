@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="flex h-full gap-2">
+    <div class="flex h-full gap-1">
         <div class="w-3/4 px-1">
             <div class="relative mx-auto h-full" :style="containerStyle">
                 <img ref="cropper" :src="source" class="object-cover" />
